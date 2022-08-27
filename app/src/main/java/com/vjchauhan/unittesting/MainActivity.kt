@@ -1,10 +1,13 @@
 package com.vjchauhan.unittesting
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import com.vjchauhan.unittesting.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +18,17 @@ class MainActivity : AppCompatActivity() {
         Log.v("Activity----1","Create")
 
         binding.button.setOnClickListener {
-            startActivity(Intent(this,SecondActivity::class.java))
+            val frame = FrameLayout(this)
+
+            if (savedInstanceState == null) {
+             var mFragment = BlankFragment()
+//                val ft: FragmentTransaction = fragmentManager.beginTransaction()
+//                ft.add(frame.getId(), mFragment).commit()
+            }
+
+            setContentView(frame)
+
+       //     startActivity(Intent(this,SecondActivity::class.java))
         }
     }
 
